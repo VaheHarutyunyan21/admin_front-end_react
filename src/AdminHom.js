@@ -1,13 +1,17 @@
 import React from 'react';
-// import { Redirect } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 function AdminHome() {
-    //if(!authorized){
-        // return <Redirect to="./login" />
-    // }
+
   return(
     <div>
-        Admin
+        
+
+
+
+
+<Link to="/products">  Products  </Link>
+<Link to="/categories">  Categories  </Link>
+        
     </div>
   )
 }
