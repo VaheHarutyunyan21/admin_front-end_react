@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect,useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import './Product.css'
 
 function Products() {
     const [data, setData] = useState([]);
@@ -20,20 +20,27 @@ function Products() {
            
 
          const  myList =  data.map((dat)=>
-         <div key={dat.id}>
-               <h2 >Name:  {dat.name}</h2>
-               <h2 >Description:  {dat.description}</h2>
-               <h2 >Price:  {dat.price}</h2>
-         </div>)
-            
+         <div className="divData" key={dat.id}>
+          <Link to={`/NewProducts/${dat.id}`}>
+                <h3 style={{ marginTop: '0'}}>{dat.name}</h3>
+            </Link>
+               
+             <h4 className='classDtaAll' >{dat.name}</h4>
+             <h2 className='classDtaAll'> Դ {dat.price}</h2> 
+             <button className='classbutton' ><h4>Գնել</h4></button>
+         </div>
+         )
+
+
 
         return (
-          <div>
+          <div className='divData1' style={{marginTop:"30vh"}}>
             <Link to='/addProducts'>
                 <button>Add Products</button>
             </Link>
-             {myList}
-          </div>
+               <h1>User Products</h1>
+                {myList}
+            </div>  
         )
       }
 

@@ -2,10 +2,9 @@ import React from 'react';
 import { useEffect,useState } from 'react';
 import { Link } from 'react-router-dom';
 
-
 function Categories() {
     const [data, setData] = useState([]);
-       
+    
           useEffect(()=>{
            fetch('http://localhost:5000/categorys',{
               method:"GET",
@@ -18,9 +17,9 @@ function Categories() {
             .catch(error => console.error(error))
         },[])
 
-        const deleteFunc = async(event) => {
-          event.preventDefault();
-          const respons=await fetch('http://localhost:5000/deleteCategorys/:id',{
+        const deleteFunc = async(productId) => {
+          
+          const respons=await fetch(`http://localhost:5000/deleteCategorys/${productId}`,{
               method:"DELETE",
               headers:{
                   'Content-type':'application/json'
@@ -28,23 +27,23 @@ function Categories() {
           })
           const data = await respons.json()
           console.log(data);
-          if (data !== null) {
-            alert("Jnjvel e")
-            // name="";
+          if (data === 1) {
+            alert("Ok")
+            window.location.reload();
         }
-        };
+        }; 
          const  myList =  data.map((dat)=>
          <div key={dat.id}>
                <h2 >Name:  {dat.name}</h2>
-               <button onClick={deleteFunc}>Delete</button>
-               <button>Edit</button>
+               <button style={{cursor:'pointer'}} onClick={() => deleteFunc(dat.id)}>Delete</button>
+               <button style={{cursor:'pointer'}}>Edit</button>
          </div>)
             
 
         return (
-          <div>
+          <div style={{marginTop:"50vh"}}>
             <Link to='/addCategories'>
-                <button>Add Categories</button>
+                <button style={{cursor:'pointer'}}  >Add Categories</button>
             </Link>
              {myList}
           </div>

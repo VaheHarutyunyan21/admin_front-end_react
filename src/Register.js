@@ -44,18 +44,57 @@ function Register() {
         navigate("/login")
     }
   };
+
+
+  const formStyles = {
+    display: 'flex',
+    flexDirection: 'column',
+    maxWidth: '300px',
+    margin: '40vh auto',
+    padding: '20px',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+  };
+
+  const labelStyles = {
+    marginBottom: '8px'
+  };
+
+  const inputStyles = {
+    padding: '8px',
+    marginBottom: '16px',
+    border: '1px solid #ccc',
+    borderRadius: '4px'
+  };
+
+  const buttonStyles = {
+    padding: '8px 16px',
+    backgroundColor: '#4CAF50',
+    color: 'white',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer'
+  };
   return (
-    <form onSubmit={handleSubmit}>
-        <h2>Register</h2>
-      <label>
+    <form style={formStyles} onSubmit={handleSubmit}>
+      <h2>Register</h2>
+      <label style={labelStyles}>
         Email:
-        <input type="email" value={email} onChange={handleEmailChange} />
+        <input type="email" value={email} onChange={handleEmailChange} style={inputStyles}
+        />
       </label>
-      <label>
+      <label style={labelStyles}>
         Password:
-        <input type="password" value={password} onChange={handlePasswordChange} />
+        <input type="password" value={password} onChange={handlePasswordChange} style={{
+          padding: '8px',
+          marginBottom: '16px',
+          border: '1px solid #ccc',
+          borderRadius: '4px',
+          marginRight: 26
+        }} />
       </label>
-      <button type="submit">Register</button>
+      <button style={buttonStyles} type="submit">Register</button>
     </form>
   );
 }

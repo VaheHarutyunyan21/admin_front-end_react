@@ -22,19 +22,19 @@ function Categories() {
           console.log(data);
           if (data !== null) {
             alert("Hajoxutyamb avelacvel e")
-            // name="";
+            window.location.reload();
         }
         };
 
 
 
         return (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} style={{marginTop:"30vh"}} >
             <label>
               Name:
               <input type="text" value={name} onChange={handleNameChange} />
             </label>
-            <button type="submit">AddCategories</button>
+            <button type="submit" style={{cursor:'pointer'}}>AddCategories</button>
           </form>
         );
       }
